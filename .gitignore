@@ -1,0 +1,13 @@
+# Build artifacts
+note*
+*.exe
+*.out
+
+# Notes
+.notes/
+
+# OS junk
+.DS_Store
+
+# Go module cache (optional)
+vendor/
