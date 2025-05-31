@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
-	"syscall"
 	"time"
 
 	"github.com/google/uuid"
@@ -47,13 +46,7 @@ func SaveNote(message string, file string, line int, tags []string) error {
 		return err
 	}
 
-	//set the FILE_ATTRIBUTE_HIDDEN so the notes directory is hidden on Windows
-	filenameW, err := syscall.UTF16PtrFromString(notesDir)
-	if err != nil {
-		return err
-	}
-	err = syscall.SetFileAttributes(filenameW, syscall.FILE_ATTRIBUTE_HIDDEN)
-	if err != nil {
+	if err := hideFile(notesDir); err != nil {
 		return err
 	}
 
