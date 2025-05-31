@@ -23,8 +23,8 @@ A terminal-based contextual note-taking app that links your thoughts directly to
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/contextual-notes-cli.git
-cd contextual-notes-cli
+git clone https://github.com/spjoes/notes-cli.git
+cd notes-cli
 ```
 
 ### 2. Build
