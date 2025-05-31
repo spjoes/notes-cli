@@ -42,10 +42,11 @@ func (i NoteItem) Title() string {
 func (i NoteItem) Description() string {
 	loc := ""
 	if i.File != "" {
+		loc += " "
 		if i.Line > 0 {
-			loc = fmt.Sprintf("%s:%d", i.File, i.Line)
+			loc += fmt.Sprintf("%s:%d", i.File, i.Line)
 		} else {
-			loc = i.File
+			loc += i.File
 		}
 	}
 	if len(i.Tags) > 0 {
@@ -183,7 +184,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case tea.WindowSizeMsg:
 		m.width, m.height = msg.Width, msg.Height
-		m.notesList.SetSize(m.width-2, m.height-4)
+		w := max(1, m.width-2)
+		h := max(1, m.height-4)
+		m.notesList.SetSize(w, h)
 		return m, nil
 
 	case tea.KeyMsg:
