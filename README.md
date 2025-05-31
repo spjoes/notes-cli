@@ -100,6 +100,7 @@ Built with:
 - [Go](https://golang.org/)
 - [Cobra](https://github.com/spf13/cobra)
 - [Bubble Tea](https://github.com/charmbracelet/bubbletea)
+- [Lipgloss](https://github.com/charmbracelet/lipgloss)
 
 ---
 
