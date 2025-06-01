@@ -213,6 +213,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		h := max(1, m.height-4)
 		m.notesList.SetSize(w, h)
 		m.textInput.Width = max(1, m.width-6)
+		if m.addStage == 2 {
+			m.fileList.SetSize(w, h)
+		}
 		return m, nil
 
 	case tea.KeyMsg:
@@ -270,7 +273,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 						}
 						m.newTags = parts
 					}
-					_ = SaveNote(m.newMsg, m.selectedFile, 0, m.newTags)
+					if err := SaveNote(m.newMsg, m.selectedFile, 0, m.newTags); err != nil {
+						return m, tea.Printf("failed to save note: %v", err)
+					}
 					newModel, _ := initialModel()
 					newModel.width, newModel.height = m.width, m.height
 					w := max(1, m.width-2)
