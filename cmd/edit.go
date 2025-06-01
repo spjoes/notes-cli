@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -81,7 +80,7 @@ Provide any of --message, --file, or --tags to update just those fields.`,
 				if cmd.Flags().Changed("tags") {
 					notes[i].Tags = editTags
 				}
-				notes[i].CreatedAt = time.Now()
+				notes[i].CreatedAt = n.CreatedAt // n.CreatedAt is the original createdAt. We don't want to change it.
 				edited = true
 				break
 			}
