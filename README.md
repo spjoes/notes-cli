@@ -70,6 +70,11 @@ notes delete --tag <tag> [--yes]
 notes edit <note-id> [--message message] [--file filename] [--tags tag1,tag2]
 ```
 
+### Open TUI
+```bash
+notes tui
+```
+
 ---
 
 ## 📂 Note Storage Format
